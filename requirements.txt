@@ -1,4 +1,5 @@
 streamlit
+langchain
 python-dotenv
 langchain-groq
 faker
