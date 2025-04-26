@@ -72,7 +72,7 @@ def display_header():
             st.caption("Your hyper-intelligent, multi-modal AI companion")
         
         with col2:
-            st.image("https://groq.com/wp-content/uploads/2023/11/groq-logotype-black.svg", width=150)
+            st.image("logo.png", width=550)
 
 # ========== SIDEBAR CONFIGURATION ========== #
 def setup_sidebar():
