@@ -13,6 +13,51 @@ Advanced AI assistant powered by Groq's lightning-fast LLMs with multi-domain kn
 - CI/CD pipeline
 - Responsive UI with dark/light mode
 
+## Repo Structure
+
+nexusai-assistant/
+├── .github/
+│   ├── workflows/
+│   │   └── ci-cd.yml
+├── app/
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── chat.py
+│   │   ├── memory.py
+│   │   └── utils.py
+│   ├── ui/
+│   │   ├── __init__.py
+│   │   ├── components.py
+│   │   └── layouts.py
+│   ├── __init__.py
+│   └── main.py
+├── configs/
+│   ├── __init__.py
+│   ├── default.yaml
+│   └── production.yaml
+├── tests/
+│   ├── __init__.py
+│   ├── test_chat.py
+│   └── test_ui.py
+├── docker/
+│   ├── nginx.conf
+│   └── Dockerfile.prod
+├── docs/
+│   ├── architecture.md
+│   └── setup.md
+├── scripts/
+│   ├── setup.sh
+│   └── deploy.sh
+├── .env.example
+├── .gitignore
+├── .dockerignore
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── pyproject.toml
+├── README.md
+└── LICENSE
+
 ## Quick Start
 
 ```bash
