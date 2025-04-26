@@ -1,0 +1,7 @@
+streamlit==1.32.0
+python-dotenv==1.0.0
+langchain-groq==0.1.0
+faker==24.8.0
+plotly==5.18.0
+pandas==2.1.4
+langchain-core==0.1.0

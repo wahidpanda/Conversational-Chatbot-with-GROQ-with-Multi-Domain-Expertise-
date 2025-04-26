@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  nexusai:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    volumes:
+      - .:/app
+    restart: unless-stopped

@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gene.ai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gene.ai
+  template:
+    metadata:
+      labels:
+        app: gene.ai
+    spec:
+      containers:
+      - name: gene.ai
+        image: yourusername/gene.ai:latest
+        ports:
+        - containerPort: 8501
+        env:
+        - name: GROQ_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gene.ai-secrets
+              key: groq-api-key
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /_stcore/health
+            port: 8501
+          initialDelaySeconds: 30
+          periodSeconds: 30
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gene.ai-service
+spec:
+  selector:
+    app: gene.ai
+  ports:
+    - protocol: TCP
+      port: 8501
+      targetPort: 8501
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gene.ai-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: geneai.yourdomain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gene.ai-service
+            port:
+              number: 8501
